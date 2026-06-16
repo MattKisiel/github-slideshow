@@ -1,4 +1,35 @@
 <script src="{{ site.baseurl }}/node_modules/reveal.js/js/reveal.js"></script>
+		<script>
+			(function () {
+				var menu = document.querySelector('.mobile-bottom-menu');
+				if (!menu) return;
+
+				var toggle = menu.querySelector('.mobile-bottom-menu__toggle');
+				var actions = menu.querySelectorAll('[data-reveal-action]');
+
+				function setOpen(isOpen) {
+					menu.classList.toggle('is-open', isOpen);
+					toggle.setAttribute('aria-expanded', String(isOpen));
+					toggle.setAttribute('aria-label', isOpen ? 'Close slide menu' : 'Open slide menu');
+				}
+
+				toggle.addEventListener('click', function () {
+					setOpen(!menu.classList.contains('is-open'));
+				});
+
+				actions.forEach(function (button) {
+					button.addEventListener('click', function () {
+						var action = button.getAttribute('data-reveal-action');
+						if (action === 'home') Reveal.slide(0, 0);
+						if (action === 'prev') Reveal.prev();
+						if (action === 'next') Reveal.next();
+						if (action === 'overview') Reveal.toggleOverview();
+						setOpen(false);
+					});
+				});
+			}());
+		</script>
+
 
 		<script>
 			// More info about config & dependencies:

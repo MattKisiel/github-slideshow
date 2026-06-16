@@ -9,6 +9,15 @@
 			{{ content }}
 		</div>
 	</div>
+	<nav class="mobile-bottom-menu" aria-label="Slide navigation">
+		<div class="mobile-bottom-menu__actions" id="mobile-bottom-menu-actions">
+			<button class="mobile-bottom-menu__button" type="button" data-reveal-action="home">Home</button>
+			<button class="mobile-bottom-menu__button" type="button" data-reveal-action="prev">Previous</button>
+			<button class="mobile-bottom-menu__button" type="button" data-reveal-action="next">Next</button>
+			<button class="mobile-bottom-menu__button" type="button" data-reveal-action="overview">Overview</button>
+		</div>
+		<button class="mobile-bottom-menu__button mobile-bottom-menu__toggle" type="button" aria-expanded="false" aria-controls="mobile-bottom-menu-actions" aria-label="Open slide menu">☰</button>
+	</nav>
 	{% include script.html %}
 </body>
 </html>

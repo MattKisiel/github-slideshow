@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espresso Logbook</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Espresso Logbook</h1>
+    <p>Prosumer espresso tracking with deep metrics and local-first storage.</p>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Log Shot</h2>
+      <form id="shot-form">
+        <div class="grid">
+          <label>Date/Time <input type="datetime-local" id="shotAt" required /></label>
+          <label>Machine <input type="text" id="machine" required /></label>
+          <label>Grinder <input type="text" id="grinder" required /></label>
+          <label>Bag ID <input type="text" id="bagId" required /></label>
+          <label>Portafilter <input type="text" id="portafilter" /></label>
+          <label>Grind Setting <input type="text" id="grindSetting" required /></label>
+          <label>Dose In (g) <input type="number" id="doseIn" step="0.1" min="0" required /></label>
+          <label>Yield Out (g) <input type="number" id="yieldOut" step="0.1" min="0" required /></label>
+          <label>Shot Time (s) <input type="number" id="shotTime" step="0.1" min="0" required /></label>
+          <label>Max Pressure (bar) <input type="number" id="maxPressure" step="0.1" min="0" /></label>
+          <label>TDS (%) <input type="number" id="tds" step="0.01" min="0" max="20" /></label>
+          <label>Satisfaction (1-10) <input type="number" id="satisfaction" min="1" max="10" required /></label>
+        </div>
+        <label>Puck Prep Notes <textarea id="puckPrepNotes"></textarea></label>
+        <label>Flavor Notes <textarea id="flavorNotes"></textarea></label>
+        <label>Visual Notes <textarea id="visualNotes"></textarea></label>
+        <button type="submit">Save Shot</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Stats Dashboard</h2>
+      <div id="kpis" class="kpis"></div>
+      <canvas id="ratioTrend"></canvas>
+      <canvas id="qualityTrend"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Recent Shots</h2>
+      <table>
+        <thead><tr><th>Date</th><th>Bag</th><th>Ratio</th><th>Time</th><th>EY%</th><th>Score</th></tr></thead>
+        <tbody id="shots-table"></tbody>
+      </table>
+      <button id="export-btn" type="button">Export JSON</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
